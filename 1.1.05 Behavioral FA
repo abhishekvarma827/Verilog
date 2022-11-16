@@ -1,0 +1,8 @@
+module (a,b,cin,sum,carry);
+input a,b,cin;
+output sum,carry;
+
+
+
+
+endmodule
