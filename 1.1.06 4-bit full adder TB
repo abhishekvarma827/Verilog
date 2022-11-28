@@ -1,0 +1,24 @@
+
+module full_tb;
+reg [3:0]a,b;
+reg cin;
+wire [3:0]sum
+wire cout;
+
+full_adder_dut (a,b,cin,sum,carry);
+
+initial begin
+a = 0;
+b = 0;
+cin =0;
+repeat (16) begin
+#10 a = a+1;
+repeat (16) begin
+#10 b = b+1;
+repeat (2)
+#10 cin = ~cin;
+end
+end
+end
+
+endmodule
