@@ -1,0 +1,58 @@
+1- Way
+
+module 4to1_MUX(y,a,s);
+input [3:0]a;
+input [1:0]s;
+output reg y;
+
+assign y = a[s];
+
+endmodule
+
+/////////////////////////////////////////
+
+2- Way
+
+module 4to1_MUX(y,a,s);
+input [3:0]a;
+input [1:0]s;
+output reg y;
+
+assign y = |~s?a[0] : (&s?a[3] : (s[0]?a[1] : a[2]));
+
+endmodule
+
+/////////////////////////////////////////
+
+3-way
+
+module 4to1_MUX(y,a,s);
+input [3:0]a;
+input [1:0]s;
+output reg y;
+
+assign y = (s == 2'd0)? a[0] : ((s == 2'd1)? a[1] : (s == 2'd2)? a[2] : a[2]));
+
+endmodule
+
+////////////////////////////////////////////
+
+Behavioral - 
+
+module 4to1_MUX(y,a,s);
+input [3:0]a;
+input [1:0]s;
+output reg y;
+
+always@(*)
+case (s)
+
+2'b00: y = a[0];
+2'b01: y = a[1];
+2'b10: y = a[2];
+2'b11: y = a[3];
+default: $display("Error");
+endcase
+endmodule
+
+
