@@ -1,0 +1,8 @@
+module 2to1mux (y,a,s);
+input [1:0]a;
+input s;
+output reg y;
+
+assign y = s? a[1] : a[0];
+
+endmodule
