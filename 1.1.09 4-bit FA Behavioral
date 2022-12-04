@@ -1,0 +1,10 @@
+
+module full_adder_4bit_bh(sum,carry,a,b,cin);
+input [3:0]a,b;
+input cin;
+output reg [3:0]sum;
+output reg carry;
+
+always @(a,b,cin)
+{carry,sum} = a+b+cin;
+endmodule
