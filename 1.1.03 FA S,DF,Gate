@@ -32,3 +32,14 @@ ha_add fa_add(a,b,w1,y1);
 ha_add fa_add(w1,cin,sum,y2);
 or or1 (carry,y1,y2);
 endmodule
+
+
+ Data Flow - 
+
+module (a,b,cin,sum,carry);
+input a,b,cin;
+output sum,carry;
+
+assign sum = a ^ b ^ cin;
+assign carry = a & b | b & cin | cin & a;
+endmodule 
