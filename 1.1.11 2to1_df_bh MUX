@@ -1,0 +1,24 @@
+module 2to1mux_df (y,a,s);
+input [1:0]a;
+input s;
+output reg y;
+
+assign y = s? a[1] : a[0];
+
+endmodule
+
+
+2to1_bh -
+
+
+module 2to1_bh(y,a,s);
+input [1:0]a;
+input s;
+output reg y;
+
+always@(*)
+if(s)
+y=a[1];
+else
+y=a[0];
+endmodule 
