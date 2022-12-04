@@ -1,0 +1,27 @@
+
+module full_adder_4bit_tb ();
+ reg [3:0]a,b;
+ reg cin;
+ wire [3:0] sum;
+ wire carry;
+full_adder_4bit_bh (sum,carry,a,b,cin);
+
+initial begin
+a = 0;
+b = 0;
+cin = 0;
+
+repeat(16);
+begin
+#10 a = a+1;
+
+repeat(16);
+begin
+#10 b = b+1;
+
+repeat(2);
+#10 cin = ~cin;
+end
+end
+end
+endmodule
