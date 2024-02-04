@@ -1,0 +1,195 @@
+module moore(
+
+input clk, rst, din,
+
+output reg dout
+
+    );
+
+parameter idle = 0;
+
+parameter s0 = 1;
+
+parameter s1 = 2;
+
+parameter s2 = 3;
+
+parameter s3 = 4;
+
+parameter s4 = 5;
+
+
+
+reg [2:0] current_state = idle, next_state = idle;
+
+
+
+// for moore fsm we can use 2 - process as well as 3 - process methodologies for accurate outputs.
+
+// we will use 2 - process methodology i.e reset logic and next state logic + output logic.
+
+
+
+// reset logic
+
+always@(posedge clk) begin
+
+    if (rst == 1'b1) begin
+
+        current_state <= idle;
+
+        end
+
+    else begin
+
+        current_state <= next_state;
+
+        end
+
+end
+
+
+
+// next state logic + output logic
+
+always@(current_state, din) begin
+
+    case(current_state)
+
+    idle : begin
+
+    dout = 1'b0;
+
+    next_state = s0;
+
+    end
+
+   
+
+    s0 : begin
+
+    if (din == 1'b1) begin
+
+        next_state = s1;
+
+        dout = 1'b0;
+
+        end
+
+    else begin
+
+        next_state = s0;
+
+        dout = 1'b0;
+
+        end
+
+    end
+
+   
+
+    s1 : begin
+
+    if (din == 1'b1) begin
+
+        next_state = s1;
+
+        dout = 1'b0;
+
+        end
+
+    else begin
+
+        next_state = s2;
+
+        dout = 1'b0;
+
+        end
+
+    end
+
+   
+
+    s2 : begin
+
+    if (din == 1'b1) begin
+
+        next_state = s1;
+
+        dout = 1'b0;
+
+        end
+
+    else begin
+
+        next_state = s3;
+
+        dout = 1'b0;
+
+        end
+
+    end
+
+   
+
+    s3 : begin
+
+    if (din == 1'b1) begin
+
+        next_state = s4;
+
+        dout = 1'b0;
+
+        end
+
+    else begin
+
+        next_state = s0;
+
+        dout = 1'b0;
+
+        end
+
+    end
+
+   
+
+    s4 : begin
+
+    if (din == 1'b1) begin
+
+        next_state = s1;
+
+        dout = 1'b1;
+
+        end
+
+    else begin
+
+        next_state = s0;
+
+        dout = 1'b1;
+
+        end
+
+    end
+
+   
+
+    default : begin
+
+    next_state = idle;
+
+    dout = 1'b0;
+
+    end
+
+   
+
+    endcase
+
+   
+
+end
+
+endmodule
