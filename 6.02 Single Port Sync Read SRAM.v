@@ -1,6 +1,7 @@
+/*Single port RAM with synchronous read The size of the RAM is 16 x 8bit words Data is written on the posedge of the clock if (we == 1) (synchronous write) 
+and the read is done 1 clock after the address is changed(Synchronous read)
+ */
 
-// Single port RAM with synchronous read
-// The size of the RAM is 16 x 8bit words
 module ram_sp_sync_read(
     input clk,
 	input [7:0] data_in,  // 8bit intput word
