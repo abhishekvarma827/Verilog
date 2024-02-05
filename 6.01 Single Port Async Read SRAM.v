@@ -1,5 +1,6 @@
 
-// Single port RAM with asynchronous read
+// Single port RAM with asynchronous read Means Data write is on the posedge of the clock if wr = 1(synchronous) but the read is immediate after the address is
+// changed (Asunchronous)
 // The size of the RAM is 16 x 8bit words
 module ram_sp_async_read(
     input clk,
